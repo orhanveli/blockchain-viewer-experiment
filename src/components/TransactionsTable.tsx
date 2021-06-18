@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -105,7 +104,7 @@ export function TransactionsTable({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, i) => (
+            {rows.map((row) => (
               <TableRow key={row.hash}>
                 <TableCell>{row.transactionIndex}</TableCell>
                 <TableCell>{row.value}</TableCell>
@@ -125,8 +124,6 @@ export function TransactionsTable({
       </TableContainer>
     );
   };
-
-  const RenderLoading = () => <CircularProgress />;
 
   const RenderError = () => {
     if (!err) {

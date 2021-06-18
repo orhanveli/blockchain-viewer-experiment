@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -42,7 +43,7 @@ export function CryptoBlock() {
   const [subscr, setSubscr] = useState<any>(null);
   const [running, setRunning] = useState(false);
 
-  const getLatestBlock = async (blockNo: number) => {
+  const getLatestBlock = async (blockNo: number | 'latest') => {
     setLoading(true);
     try {
       const latest = await web3Instance.eth.getBlock(blockNo);
@@ -56,7 +57,7 @@ export function CryptoBlock() {
   const setSubscription = () => {
     const subscription = web3Instance.eth
       .subscribe('newBlockHeaders')
-      .on('connected', function (subscriptionId) {
+      .on('connected', function (/* subscriptionId */) {
         setRunning(true);
       })
       .on('data', async function (blockHeader) {
@@ -71,7 +72,9 @@ export function CryptoBlock() {
   };
 
   useEffect(() => {
-    setSubscription();
+    getLatestBlock('latest').then(() => {
+      setSubscription();
+    });
     return () => {
       // unsubscribes the subscription
       if (subscr) {
