@@ -1,5 +1,11 @@
 # Etherium Blockchaing Network Viewer
 
+This app fetches the latest blocks on Etherium network. To run this project in your local machine you should place a `.env.local` file at the project root dir. This env file should contain a web socket Etherium network provider liek this:
+
+```sh
+REACT_APP_CRYPTO_NETWORK_URI=wss://mainnet.infura.io/ws/v3/7fc89f....
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
