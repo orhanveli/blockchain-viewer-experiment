@@ -160,7 +160,12 @@ export function CryptoBlock() {
               <strong>Miner</strong>
             </Grid>
             <Grid item xs={8}>
-              {latestBlock.miner}
+              <a
+                href={`https://ethpool.org/miners/${latestBlock.miner}/dashboard`}
+                target="_blank"
+              >
+                {latestBlock.miner}
+              </a>
             </Grid>
           </GridRow>
           <GridRow>

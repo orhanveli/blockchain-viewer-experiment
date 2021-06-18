@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -75,16 +74,14 @@ export function TransactionsTable({
     if (rows.length === 0) {
       return (
         <>
-          <Tooltip title="To fetch transaction you should pause to execution">
-            <Button
-              onClick={handleClick}
-              variant="contained"
-              color="primary"
-              disabled={loading}
-            >
-              {loading ? 'Loading...' : 'Get Transactions'}
-            </Button>
-          </Tooltip>
+          <Button
+            onClick={handleClick}
+            variant="contained"
+            color="primary"
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : 'Get Transactions'}
+          </Button>
         </>
       );
     }
